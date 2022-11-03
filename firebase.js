@@ -17,13 +17,12 @@ import {
 // Your web app's Firebase configuration
 const firebaseConfig = {
   // Put you credentials here
-  apiKey: "AIzaSyAVfLCVmG6EBOr2z1AkYK2aI0jA8mO7n9w",
-    authDomain: "aula-2022.firebaseapp.com",
-    projectId: "aula-2022",
-    storageBucket: "aula-2022.appspot.com",
-    messagingSenderId: "369263924085",
-    appId: "1:369263924085:web:3bc65c13ae0fc1ef71793c",
-    measurementId: "G-SH6FM5PC89"
+  apiKey: "AIzaSyB2BurO2tM90G0q3kMqq33fFYd2j70IpIk",
+  authDomain: "fir-crud-aula-cda45.firebaseapp.com",
+  projectId: "fir-crud-aula-cda45",
+  storageBucket: "fir-crud-aula-cda45.appspot.com",
+  messagingSenderId: "377544400039",
+  appId: "1:377544400039:web:75a2dfd53f746d8fe40f82"
 };
 
 // Initialize Firebase
@@ -41,6 +40,7 @@ export const saveTask = (title, description) =>
 
 export const onGetTasks = (callback) =>
   onSnapshot(collection(db, "tasks"), callback);
+  
 
 /**
  *
@@ -54,3 +54,29 @@ export const updateTask = (id, newFields) =>
   updateDoc(doc(db, "tasks", id), newFields);
 
 export const getTasks = () => getDocs(collection(db, "tasks"));
+/** 
+* @param {string} nome
+* @param {string} descricao
+* @param {string} valor
+* @param {string} dataV
+*/
+
+export const saveProduto = (nome, quantidade, valor, dataV) =>
+  addDoc(collection(db, "produto"), { nome, quantidade, valor, dataV });
+
+export const onGetProduto = (callback) =>
+  onSnapshot(collection(db, "produto"), callback);
+
+  /**
+ *
+ * @param {string} ids Task ID
+ */
+
+export const deleteProduto = (id) => deleteDoc(doc(db, "produto", id));
+
+export const getProduto = (id) => getDoc(doc(db, "produto", id));
+
+export const updateProduto = (id, newFields) =>
+  updateDoc(doc(db, "produto", id), newFields);
+
+export const getProdutos = () => getDocs(collection(db, "produto"));
